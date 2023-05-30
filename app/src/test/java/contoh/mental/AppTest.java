@@ -4,6 +4,9 @@
 package contoh.mental;
 
 import org.junit.jupiter.api.Test;
+
+import project.mental.App;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
