@@ -31,7 +31,7 @@ javafx {
 
 application {
     // Define the main class for the application.
-    mainClass = 'contoh.mental.App'
+    mainClass = 'project.mental.App'
 }
 
 tasks.named('test') {
