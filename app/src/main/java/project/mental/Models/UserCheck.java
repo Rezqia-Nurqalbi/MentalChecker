@@ -17,7 +17,7 @@ public class UserCheck extends User {
     }
 
     public void answerA(){
-        mentalScore -= 0;
+        mentalScore -= 10;
     }
 
     public void answerB(){
@@ -25,7 +25,7 @@ public class UserCheck extends User {
     }
 
     public void answerC(){
-        mentalScore -= 10;
+        mentalScore -= 0;
     }
 
     public String showResult(){
@@ -35,9 +35,9 @@ public class UserCheck extends User {
         } else if (mentalScore >= 46 && mentalScore <= 70)
             {return("Buruk");
         } else if (mentalScore >= 71 && mentalScore <= 85)
-            {return("Baik");
+            {return("Kondisimu baik \n ");
         }else if (mentalScore >= 86 && mentalScore <= 100)
-            {return("Mamamu pasti bangga");}
+            {return("Kamu berada di kondisi yang baik, Stay Happy ya!");}
          else {
             return null;
         }

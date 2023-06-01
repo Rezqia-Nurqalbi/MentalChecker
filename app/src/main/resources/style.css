@@ -15,6 +15,10 @@
 }
 
 .custom-scene2{
-    -fx-padding: 500px;
+    -fx-padding: 240px;
     -fx-background-color: rgba(126, 217, 87, 1);
+}
+
+.custom-menu{
+    -fx-background-color :rgba(108, 115, 179, 1)
 }
