@@ -11,35 +11,35 @@ public class UserCheck extends User {
         this.mentalScore = mentalScore;
     }
 
-    public UserCheck(String name, int mentalScore) {
+    public UserCheck(String name) {
         super(name);
-        this.mentalScore = mentalScore;
+        this.mentalScore = 100;
     }
 
-    void answerA(){
+    public void answerA(){
         mentalScore -= 0;
     }
 
-    void answerB(){
+    public void answerB(){
         mentalScore -= 5;
     }
 
-    void answerC(){
+    public void answerC(){
         mentalScore -= 10;
     }
 
-    void showResult(){
+    public String showResult(){
         //pake pengkondisian 
-        if (mentalScore >= 0 && mentalScore <= 45) {
-            System.out.println("Sangat Buruk");
-        } else if (mentalScore >= 46 && mentalScore <= 70){
-            System.out.println("Buruk");
-        } else if (mentalScore >= 71 && mentalScore <= 85){
-            System.out.println("Cukup Baik");
-        } else if (mentalScore >= 86 && mentalScore <= 100){
-            System.out.println("Sangat Baik");
-        } else {
-            System.out.println("Score Mental Tidak valid");
+        if (mentalScore >= 0 && mentalScore <= 45) 
+        {return("Sangat buruk");
+        } else if (mentalScore >= 46 && mentalScore <= 70)
+            {return("Buruk");
+        } else if (mentalScore >= 71 && mentalScore <= 85)
+            {return("Baik");
+        }else if (mentalScore >= 86 && mentalScore <= 100)
+            {return("Mamamu pasti bangga");}
+         else {
+            return null;
         }
 
     }
