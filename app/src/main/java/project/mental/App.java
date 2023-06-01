@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class App extends Application {
@@ -27,23 +28,28 @@ public class App extends Application {
     private void showStartScene() {
         primaryStage.setTitle("Mental Checker");
 
-        Image image = new Image(getClass().getResource("/scene1.png").toString());
-        ImageView scene1 = new ImageView(image);
-        scene1.setFitWidth(1000);
-        scene1.setFitHeight(600);
-        // scene1.setPreserveRatio(true);
 
+        Image image = new Image(getClass().getResource("/scene1.png").toString());
+        ImageView bgscene1 = new ImageView(image);
+        bgscene1.setFitWidth(600);
+        bgscene1.setFitHeight(400);
+
+        Label title = new Label("Selamat Datang");
+        title.setFont(Font.font("ELEPHANT", 25));
         Button startButton = new Button("Mulai");
-        startButton.setAlignment(Pos.BOTTOM_LEFT);
+        startButton.getStyleClass().add("custom-btnstart");
         startButton.setOnAction(e -> showNameInputScene());
 
-        StackPane layout1 = new StackPane();
-        layout1.getChildren().addAll(scene1,startButton);
-        layout1.setAlignment(Pos.CENTER);
-        BorderPane layout = new BorderPane();
-        layout.setBottom(layout1);
 
-        Scene scene = new Scene(layout, 1000, 600);
+
+        VBox layout1 = new VBox(15);
+        layout1.getChildren().addAll(title, bgscene1,startButton);
+        layout1.setAlignment(Pos.CENTER);
+        layout1.getStyleClass().add("custom-padding1");
+        layout1.setStyle("-fx-padding:100px");
+
+        Scene scene = new Scene(layout1, 1000, 600);
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -57,11 +63,18 @@ public class App extends Application {
             showMenuScene();
         });
 
-        VBox layout = new VBox(10);
-        layout.setAlignment(Pos.CENTER);
-        layout.getChildren().addAll(nameLabel, nameField, nextButton);
+        Image image = new Image(getClass().getResource("/scene2.png").toString());
+        ImageView bguname = new ImageView(image);
+        bguname.setFitWidth(500);
+        bguname.setFitHeight(400);
 
-        Scene scene = new Scene(layout, 400, 300);
+        VBox scene2 = new VBox(10);
+        scene2.setAlignment(Pos.CENTER);
+        scene2.getChildren().addAll(bguname,nameLabel, nameField, nextButton);
+        scene2.getStyleClass().add("custom-scene2");
+
+        Scene scene = new Scene(scene2, 1000, 600);
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
     }
