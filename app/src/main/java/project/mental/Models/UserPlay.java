@@ -16,6 +16,8 @@ public class UserPlay  extends User{
         this.score = score;
     }
 
+    
+
     void cekScore() {
         System.out.println("skor anda "+this.score+"dari 10 pertanyaan");
     }
