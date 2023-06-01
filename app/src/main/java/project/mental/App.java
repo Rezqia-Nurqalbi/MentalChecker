@@ -4,8 +4,10 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -60,58 +62,143 @@ public class App extends Application {
         primaryStage.show();
     }
 
+    // private void showNameInputScene() {
+    //     Label nameLabel = new Label("Masukkan nama Anda:");
+    //     TextField nameField = new TextField();
+    //     nameField.setPromptText("name");
+    //     Button nextButton = new Button("Selanjutnya");
+    //     nextButton.setOnAction(e -> {
+    //         user1.setName(name);
+    //         showMenuScene();
+    //     });
+
+    //     Image image = new Image(getClass().getResource("/scene2.png").toString());
+    //     ImageView bguname = new ImageView(image);
+    //     bguname.setFitWidth(500);
+    //     bguname.setFitHeight(400);
+
+    //     VBox scene2 = new VBox(10);
+    //     scene2.setPrefWidth(1000);
+    //     scene2.setAlignment(Pos.CENTER);
+    //     scene2.getChildren().addAll(bguname,nameLabel, nameField, nextButton);
+    //     scene2.getStyleClass().add("custom-scene2");
+
+    //     Scene scene = new Scene(scene2, 1000, 600);
+    //     scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+    //     primaryStage.setScene(scene);
+    //     primaryStage.show();
+    // }
+
     private void showNameInputScene() {
-        Label nameLabel = new Label("Masukkan nama Anda:");
+        Label nameLabel = new Label("Masukkan nama:");
         TextField nameField = new TextField();
         nameField.setPromptText("name");
+    
+        Label passwordLabel = new Label("Masukkan password:");
+        PasswordField passwordField = new PasswordField();
+        passwordField.setPromptText("password");
+    
         Button nextButton = new Button("Selanjutnya");
         nextButton.setOnAction(e -> {
-            user1.setName(name);
-            showMenuScene();
+            String name = nameField.getText();
+            String passwordText = passwordField.getText();
+    
+            if (!name.isEmpty() && !passwordText.isEmpty()) {
+                try {
+                    int password = Integer.parseInt(passwordText);
+                    user1.setName(name);
+                    user1.setPass(password);
+                    showMenuScene();
+                } catch (NumberFormatException ex) {
+                    showAlert("Password harus berupa angka!");
+                }
+            } else {
+                showAlert("Nama dan password tidak boleh kosong!");
+            }
         });
-
+    
         Image image = new Image(getClass().getResource("/scene2.png").toString());
         ImageView bguname = new ImageView(image);
         bguname.setFitWidth(500);
         bguname.setFitHeight(400);
-
+    
         VBox scene2 = new VBox(10);
         scene2.setPrefWidth(1000);
         scene2.setAlignment(Pos.CENTER);
-        scene2.getChildren().addAll(bguname,nameLabel, nameField, nextButton);
+        scene2.getChildren().addAll(bguname, nameLabel, nameField, passwordLabel, passwordField, nextButton);
         scene2.getStyleClass().add("custom-scene2");
-
+    
         Scene scene = new Scene(scene2, 1000, 600);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    // private void showMenuScene() {
+    //     Label menuLabel = new Label("Pilih menu:");
+    //     menuLabel.setFont(Font.font("ELEPHANT", 25));
+
+    //     Button mentalCheckerButton = new Button("Mental Check");
+    //     mentalCheckerButton.getStyleClass().add("custom-btnstart");
+    //     mentalCheckerButton.setOnAction(e -> showMentalCheckerScene());
+
+    //     Button tekaTekiButton = new Button("Teka-Teki");
+    //     tekaTekiButton.getStyleClass().add("custom-btnstart");
+    //     tekaTekiButton.setOnAction(e -> showTekaTekiScene());
+
+    //     Image image = new Image(getClass().getResource("/menu.png").toString());
+    //     ImageView bgmenu = new ImageView(image);
+    //     bgmenu.setFitWidth(1000);
+    //     bgmenu.setFitHeight(600);
+    //     // bgmenu.setPreserveRatio(true);
+
+    //     VBox layout = new VBox(10);
+    //     layout.setAlignment(Pos.CENTER);
+    //     layout.getChildren().addAll(menuLabel, mentalCheckerButton, tekaTekiButton);
+    //     // layout.getStyleClass().add("custom-menu");
+
+    //     StackPane layout2 = new StackPane(bgmenu, layout);
+
+    //     Scene scene = new Scene(layout2, 1000, 600);
+    //     scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+    //     primaryStage.setScene(scene);
+    // }
+
     private void showMenuScene() {
         Label menuLabel = new Label("Pilih menu:");
         menuLabel.setFont(Font.font("ELEPHANT", 25));
-
+    
         Button mentalCheckerButton = new Button("Mental Check");
         mentalCheckerButton.getStyleClass().add("custom-btnstart");
         mentalCheckerButton.setOnAction(e -> showMentalCheckerScene());
-
+    
         Button tekaTekiButton = new Button("Teka-Teki");
         tekaTekiButton.getStyleClass().add("custom-btnstart");
         tekaTekiButton.setOnAction(e -> showTekaTekiScene());
-
+    
+        Button backButton = new Button("Kembali");
+        backButton.getStyleClass().add("custom-btnstart");
+        backButton.setOnAction(e -> showStartScene()); // Kembali ke halaman sebelumnya
+    
         Image image = new Image(getClass().getResource("/menu.png").toString());
         ImageView bgmenu = new ImageView(image);
         bgmenu.setFitWidth(1000);
         bgmenu.setFitHeight(600);
-        // bgmenu.setPreserveRatio(true);
-
+    
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.CENTER);
-        layout.getChildren().addAll(menuLabel, mentalCheckerButton, tekaTekiButton);
-        // layout.getStyleClass().add("custom-menu");
-
+        layout.getChildren().addAll(menuLabel, mentalCheckerButton, tekaTekiButton, backButton);
+    
         StackPane layout2 = new StackPane(bgmenu, layout);
-
+    
         Scene scene = new Scene(layout2, 1000, 600);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         primaryStage.setScene(scene);
@@ -143,13 +230,8 @@ public class App extends Application {
         // Tombol untuk berpindah ke scene berikutnya
         Button nextButton = new Button("Next");
         nextButton.setOnAction(e -> nextScene());
-
-        
-
     }
 
-    
-    
     private Scene createMentalScene(String question) {
         Label pertanyaan=new Label(question);
         pertanyaan.setTextAlignment(TextAlignment.CENTER);
