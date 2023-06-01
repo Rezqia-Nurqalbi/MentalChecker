@@ -7,8 +7,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+<<<<<<< HEAD
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+=======
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+>>>>>>> b172a0496cc8d378161336924131ab518761a5c1
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -26,19 +32,29 @@ public class App extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         showStartScene();
+
     }
 
     private void showStartScene() {
         primaryStage.setTitle("Mental Checker");
 
+        Image image = new Image(getClass().getResource("/scene1.png").toString());
+        ImageView scene1 = new ImageView(image);
+        scene1.setFitWidth(1000);
+        scene1.setFitHeight(600);
+        // scene1.setPreserveRatio(true);
+
         Button startButton = new Button("Mulai");
+        startButton.setAlignment(Pos.BOTTOM_LEFT);
         startButton.setOnAction(e -> showNameInputScene());
 
-        VBox layout = new VBox(10);
-        layout.setAlignment(Pos.CENTER);
-        layout.getChildren().add(startButton);
+        StackPane layout1 = new StackPane();
+        layout1.getChildren().addAll(scene1,startButton);
+        layout1.setAlignment(Pos.CENTER);
+        BorderPane layout = new BorderPane();
+        layout.setBottom(layout1);
 
-        Scene scene = new Scene(layout, 400, 300);
+        Scene scene = new Scene(layout, 1000, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
