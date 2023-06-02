@@ -323,7 +323,7 @@ public class App extends Application {
         Scene scene1 =createplayscene("Saya adalah sebuah angka. Jika saya membagi 20 menjadi dua bagian, saya akan mendapatkan dua angka yang jika ditambahkan, \nakan menghasilkan hasil yang sama seperti ketika saya mengalikannya. Apa angka saya?", "5", "5","8", "10");
         Scene scene2 =createplayscene("Aku bisa menghancurkan rasa lapar, membuatmu merasa kenyang, dan tidak pernah bergerak. Apa aku?","Pikiran", "Makanan", "Air", "Pikiran");
         Scene scene3=createplayscene("Aku berada di awal kehidupan, di akhir kematian, dan selalu hadir dalam perjalanan hidupmu. Apa aku?", "Harapan","Harapan", "Cinta", "Keberanian");
-        Scene scene4=createplayscene("Aku memiliki banyak cabang tapi tidak memiliki daun. Aku tidak memancarkan cahaya, tetapi aku membuat orang terang. Apa aku?", "Jaringan Saraf","Pohon Keluarga","Listrik","Jaringan ");
+        Scene scene4=createplayscene("Aku memiliki banyak cabang tapi tidak memiliki daun. Aku tidak memancarkan cahaya, tetapi aku membuat orang terang. Apa aku?", "Jaringan Saraf","Pohon Keluarga","Listrik","Jaringan Saraf");
         Scene scene5=createplayscene("Aku adalah sesuatu yang kamu bisa menemukan di dalam dirimu, memberimu kekuatan, \ndan membuatmu merasa tak terkalahkan. Apa aku?", "Kepercayaan Diri","Kepercayaan Diri", "Imajinasi","Waktu");
         Scene scene6=createplayscene("Aku bisa melihat segalanya, tetapi tidak memiliki mata. Aku bisa memecahkan teka-teki, \ntetapi tidak memiliki otak. Siapakah aku?","Cahaya","Kaca Pembesar","Cermin","Cahaya");
         Scene scene7=createplayscene("Aku mengalir tanpa henti, tetapi tidak bisa dipegang. Aku bisa merusak atau memperbaiki suasana hati. Apa aku?", "Emosi","Emosi","Waktu","Suara");
@@ -344,10 +344,11 @@ public class App extends Application {
         AButton.getStyleClass().add("custom-tekatekibuton");
         AButton.setOnAction(e->{
             userplay1.setAnswer(answer);
-            userplay1.answerA(A);;
+            userplay1.answerA(A);
             userplay1.checkAnswer();
+            
+            System.out.println(userplay1.key);
             System.out.println(userplay1.answer);
-            System.out.println("\n"+userplay1.key);
             nextPlayScene();
         });
         Button BButton = new Button(B);
@@ -356,18 +357,20 @@ public class App extends Application {
             userplay1.setAnswer(answer);
             userplay1.answerB(B);
             userplay1.checkAnswer();
+            
+            System.out.println(userplay1.key);
             System.out.println(userplay1.answer);
-            System.out.println("\n"+userplay1.key);
             nextPlayScene();
         });
         Button CButton = new Button(C);
-        userplay1.setAnswer(answer);
         CButton.getStyleClass().add("custom-tekatekibuton");
         CButton.setOnAction(e->{
+            userplay1.setAnswer(answer);
             userplay1.answerC(C);
             userplay1.checkAnswer();
+            System.out.println(userplay1.key);
             System.out.println(userplay1.answer);
-            System.out.println("\n"+userplay1.key);
+    
             nextPlayScene();
         });
 
