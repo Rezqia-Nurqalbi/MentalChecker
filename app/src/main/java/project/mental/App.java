@@ -226,22 +226,13 @@ public class App extends Application {
         currentSceneIndex = 0;
         primaryStage.setScene(scenes[currentSceneIndex]);
         primaryStage.show();
-
-        // Tombol untuk berpindah ke scene berikutnya
-        Button nextButton = new Button("Next");
-        nextButton.setOnAction(e -> nextScene());
     }
 
     private Scene createMentalScene(String question) {
         Label pertanyaan=new Label(question);
         pertanyaan.setTextAlignment(TextAlignment.CENTER);
         pertanyaan.setFont(Font.font("Times New Roman", 25));
-        // GridPane gridpane=new GridPane();
-        // gridpane.setPadding(new Insets(2,2,2,2));
-        // gridpane.setHgap(1);
-        // gridpane.setVgap(5);
-        // GridPane.setConstraints(pertanyaan, 7, 1);
-        // gridpane.getChildren().addAll(pertanyaan);
+ 
         
         Button yesButton = new Button("Iya");
         yesButton.getStyleClass().add("custom-btnstart");
@@ -274,17 +265,9 @@ public class App extends Application {
         // layout1.getStyleClass().add("custom-padding1");
 
         StackPane layout2 = new StackPane(bgscenemental, layout1);
-        // gridpane.getChildren().addAll(yesButton,noButton,smButton);
-        // GridPane.setConstraints(yesButton, 6, 2);
-        // GridPane.setConstraints(smButton, 7, 2);
-        // GridPane.setConstraints(noButton, 8, 2);
-        // gridpane.setAlignment(Pos.CENTER);
-        // StackPane stackPane=new StackPane(gridpane);
         Scene scene = new Scene(layout2, 1000, 600);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        return new Scene(layout2, 1000, 600);
+        return scene;
     }
     private Scene show_result (){
         Label resultLabel=new Label(user1.showResult());
@@ -309,41 +292,52 @@ public class App extends Application {
         
         if (currentSceneIndex >scenes.length-1) {
             currentSceneIndex = 0;
-            primaryStage.setScene(show_result());    
+        Scene nextScene = show_result();
+        primaryStage.setScene(nextScene);
+        primaryStage.show();
         }
+
         else{
         primaryStage.setScene(scenes[currentSceneIndex]);
         }
     }
 
 
-    private void showTekaTekiScene(){}
-    // private void showTekaTekiScene() {
-    //     Scene scene1 =createplayscene(" Saya adalah sebuah angka. Jika saya membagi 20 menjadi dua bagian, saya akan mendapatkan dua angka yang jika ditambahkan, akan menghasilkan hasil yang sama seperti ketika saya mengalikannya. Apa angka saya?", "5", "5","8", "10");
-    // }
-    // private Scene createplayscene(String question,String answer,String A,String B,String C) {
-    //     Label pertanyaan=new Label(question);
-    //     GridPane gridpane=new GridPane();
-    //     gridpane.setPadding(new Insets(2,2,2,2));
-    //     gridpane.setHgap(1);
-    //     gridpane.setVgap(5);
-    //     GridPane.setConstraints(pertanyaan, 7, 1);
-    //     gridpane.getChildren().addAll(pertanyaan);
-    //     Button AButton = new Button(A);
-    //     AButton.setOnAction(e->{
-    //         user1.answerA();
-    //         nextScene();
-    //     });
-    //     Button smButton = new Button(B);
-    //     smButton.setOnAction(e->{
-    //         user1.answerB();
-    //         nextScene();
-    //     });
-    //     Button noButton = new Button("Tidak");
-    //     noButton.setOnAction(e->{
-    //         user1.answerC();
-    //         nextScene();
-    //     });
+   
+    private void showTekaTekiScene() {
+        Scene scene1 =createplayscene(" Saya adalah sebuah angka. Jika saya membagi 20 menjadi dua bagian, saya akan mendapatkan dua angka yang jika ditambahkan, akan menghasilkan hasil yang sama seperti ketika saya mengalikannya. Apa angka saya?", "5", "5","8", "10");
+        Scene scene2 =createplayscene("Halo pak","A", "a", "B", "C");
+
+    }
+    private Scene createplayscene(String question,String answer,String A,String B,String C) {
+        Label pertanyaan=new Label(question);
+        
+        Button AButton = new Button(A);
+        AButton.setOnAction(e->{
+            user1.answerA();
+            nextScene();
+        });
+        Button BButton = new Button(B);
+        BButton.setOnAction(e->{
+            user1.answerB();
+            nextScene();
+        });
+        Button CButton = new Button("Tidak");
+        CButton.setOnAction(e->{
+            user1.answerC();
+            nextScene();
+        });
+        
+        HBox layout=new HBox(10);
+        layout.getChildren().addAll(AButton,BButton,CButton);
+        VBox layout1=new VBox(10);
+        layout1.getChildren().addAll(pertanyaan,layout1);
+        Scene scene=new Scene(layout1, 600, 600);
+        return scene;
+    }
+
+
+        
     
     private void showResultScene(String result ) {
         Label resultLabel = new Label("Hasil: " + result);
