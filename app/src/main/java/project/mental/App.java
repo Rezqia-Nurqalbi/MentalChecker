@@ -415,7 +415,7 @@ public class App extends Application {
         Label resultLabel = new Label("Goodjob");
         Label pointLabel=new Label("Anda berhasil  menjawab "+userplay1.getScore()+" Dari 10 pertanyaan dengan benar");
         Button closeButton = new Button("Tutup");
-        closeButton.getStyleClass().add("custom-ShowResult");
+        
         closeButton.setOnAction(e -> showMenuScene());
         userplay1.setScore(0);
         
