@@ -1,0 +1,24 @@
+.custom-btnstart {
+    -fx-background-color : rgb(39, 10, 119)
+    -fx-background-radius 5px;
+    -fx-border-radius: 5px;
+    -fx-text-fill: rgb(233, 215, 215);
+    -fx-font-family: "CURSIVE";
+    -fx-font-size: 20px;
+    -fx-min-width: 100px;
+    -fx-min-height: 40px;
+}
+
+.custom-padding1 {
+    -fx-padding: 500px;
+    -fx-background-color :rgba(108, 115, 179, 1)
+}
+
+.custom-scene2{
+    -fx-padding: 240px;
+    -fx-background-color: rgba(126, 217, 87, 1);
+}
+
+.custom-menu{
+    -fx-background-color :rgba(108, 115, 179, 1)
+}
