@@ -206,16 +206,16 @@ public class App extends Application {
 
     private void showMentalCheckerScene() {
         // Inisialisasi semua scene
-        Scene scene1 = createMentalScene("1. Seperti apa perasaanmu saat ini?");
-        Scene scene2 = createMentalScene("2. Apa kamu merasa percaya diri dengan semua kondisimu sekarang?");
-        Scene scene3 = createMentalScene("3. Apakah Kamu Mudah Tersinggung dengan Omongan dan Respon Orang Lain Terhadapmu?");
-        Scene scene4 = createMentalScene("4. Apakah perasaan cemas atau tidak nyaman di sekitar orang lain mengganggu Anda?");
-        Scene scene5 = createMentalScene("5. Apakah Anda pernah merasa bahwa Anda telah dipengaruhi oleh perasaan gelisah, cemas, atau gugup?");
-        Scene scene6 = createMentalScene("6.Selama 12 bulan terakhir, seberapa sering Anda merasa sendirian atau kesepian?");
+        Scene scene1 = createMentalScene("1. Apa kamu sering mendapati dirimu merasakan kesedihan yang berlebihan?");
+        Scene scene2 = createMentalScene("2. Apa kamu merasa tak percaya diri dengan semua kondisimu sekarang?");
+        Scene scene3 = createMentalScene("3. Apakah Kamu Mudah Tersinggung dengan \n Omongan dan Respon Orang Lain Terhadapmu?");
+        Scene scene4 = createMentalScene("4. Apakah perasaan cemas atau tidak nyaman \n di sekitar orang lain mengganggu Anda?");
+        Scene scene5 = createMentalScene("5. Apakah Anda pernah merasa bahwa Anda telah dipengaruhi \noleh perasaan gelisah, cemas, atau gugup?");
+        Scene scene6 = createMentalScene("6.Selama 12 bulan terakhir, seberapa sering Anda merasa \nsendirian atau kesepian?");
         Scene scene7 = createMentalScene("7.Selama 12 bulan terakhir, seberapa sering Anda \n secara serius mempertimbangkan untuk mencoba bunuh diri?");
-        Scene scene8 = createMentalScene("8.Selama 12 bulan terakhir, apakah Anda pernah merencanakan bagaimana Anda akan mencoba bunuh diri?");
-        Scene scene9 = createMentalScene("9.Apakah Anda merasa tidak berharga atau merasa bersalah secara berlebihan?");
-        Scene scene10 = createMentalScene("10.Apakah Anda sering merasa kelelahan fisik dan mental tanpa alasan yang jelas?");
+        Scene scene8 = createMentalScene("8.Selama 12 bulan terakhir, apakah Anda pernah merencanakan \nbagaimana Anda akan mencoba bunuh diri?");
+        Scene scene9 = createMentalScene("9.Apakah Anda merasa tidak berharga atau \nmerasa bersalah secara berlebihan?");
+        Scene scene10 = createMentalScene("10.Apakah Anda sering merasa kelelahan fisik \ndan mental tanpa alasan yang jelas?");
         // Tambahkan scene lainnya di sini...
 
         // Simpan semua scene dalam sebuah array
@@ -232,7 +232,6 @@ public class App extends Application {
         Label pertanyaan=new Label(question);
         pertanyaan.setTextAlignment(TextAlignment.CENTER);
         pertanyaan.setFont(Font.font("Times New Roman", 25));
- 
         
         Button yesButton = new Button("Iya");
         yesButton.getStyleClass().add("custom-btnstart");
@@ -253,7 +252,7 @@ public class App extends Application {
             nextScene();
         });
 
-        Image image1 = new Image(getClass().getResource("/image1.png").toString());
+        Image image1 = new Image(getClass().getResource("/bgmntal.png").toString());
         ImageView bgscenemental = new ImageView(image1);
         bgscenemental.setFitWidth(1000);
         bgscenemental.setFitHeight(600);

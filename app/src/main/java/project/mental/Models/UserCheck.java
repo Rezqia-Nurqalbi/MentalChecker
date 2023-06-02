@@ -31,14 +31,14 @@ public class UserCheck extends User {
     public String showResult(){
         //pake pengkondisian 
         if (mentalScore >= 0 && mentalScore <= 45) 
-        {return("Sangat buruk");
+        {return("Kondisimu sedang tidak baik..., kami menyarankan agar kamu segera bertemu dengan psikolog / psikiater \n<b> Tidak apa-apa untuk merasa tidak stabil. Tidak apa-apa untuk memutuskan hubungan. \nTidak apa-apa bersembunyi dari dunia. Tidak apa-apa butuh bantuan. \nTidak apa-apa untuk tidak baik-baik saja. Penyakit mental Anda bukanlah kegagalan pribadi.</b>");
         } else if (mentalScore >= 46 && mentalScore <= 70)
-            {return("Buruk");
+            {return("Kamu Berada dikondisi kurang Baik...\n<b> Kamu tidak dapat mengontrol semuanya. Terkadang kamu hanya perlu rileks dan yakin bahwa segala sesuatunya akan berhasil. \nLepaskan sedikit dan biarkan hidup terjadi.</b>");
         } else if (mentalScore >= 71 && mentalScore <= 85)
-            {return("Kondisimu baik \n ");
+            {return("Kondisimu baik! \n<b>Tetap seperti itu ya!</b>");
         }else if (mentalScore >= 86 && mentalScore <= 100)
-            {return("Kamu berada di kondisi yang baik, Stay Happy ya!");}
-         else {
+            {return("Selamat Kamu berada di kondisi yang baik! \n<b>Stay Happy ya!");}
+        else {
             return null;
         }
 
