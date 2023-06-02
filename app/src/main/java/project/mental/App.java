@@ -206,16 +206,16 @@ public class App extends Application {
 
     private void showMentalCheckerScene() {
         // Inisialisasi semua scene
-        Scene scene1 = createMentalScene("1. Apa kamu sering mendapati dirimu merasakan kesedihan yang berlebihan?");
-        Scene scene2 = createMentalScene("2. Apa kamu merasa tak percaya diri dengan semua kondisimu sekarang?");
-        Scene scene3 = createMentalScene("3. Apakah Kamu Mudah Tersinggung dengan \n Omongan dan Respon Orang Lain Terhadapmu?");
-        Scene scene4 = createMentalScene("4. Apakah perasaan cemas atau tidak nyaman \n di sekitar orang lain mengganggu Anda?");
-        Scene scene5 = createMentalScene("5. Apakah Anda pernah merasa bahwa Anda telah dipengaruhi \noleh perasaan gelisah, cemas, atau gugup?");
-        Scene scene6 = createMentalScene("6.Selama 12 bulan terakhir, seberapa sering Anda merasa \nsendirian atau kesepian?");
+        Scene scene1 = createMentalScene("1. Seperti apa perasaanmu saat ini?");
+        Scene scene2 = createMentalScene("2. Apa kamu merasa percaya diri dengan semua kondisimu sekarang?");
+        Scene scene3 = createMentalScene("3. Apakah Kamu Mudah Tersinggung dengan Omongan dan Respon Orang Lain Terhadapmu?");
+        Scene scene4 = createMentalScene("4. Apakah perasaan cemas atau tidak nyaman di sekitar orang lain mengganggu Anda?");
+        Scene scene5 = createMentalScene("5. Apakah Anda pernah merasa bahwa Anda telah dipengaruhi oleh perasaan gelisah, cemas, atau gugup?");
+        Scene scene6 = createMentalScene("6.Selama 12 bulan terakhir, seberapa sering Anda merasa sendirian atau kesepian?");
         Scene scene7 = createMentalScene("7.Selama 12 bulan terakhir, seberapa sering Anda \n secara serius mempertimbangkan untuk mencoba bunuh diri?");
-        Scene scene8 = createMentalScene("8.Selama 12 bulan terakhir, apakah Anda pernah merencanakan \nbagaimana Anda akan mencoba bunuh diri?");
-        Scene scene9 = createMentalScene("9.Apakah Anda merasa tidak berharga atau \nmerasa bersalah secara berlebihan?");
-        Scene scene10 = createMentalScene("10.Apakah Anda sering merasa kelelahan fisik \ndan mental tanpa alasan yang jelas?");
+        Scene scene8 = createMentalScene("8.Selama 12 bulan terakhir, apakah Anda pernah merencanakan bagaimana Anda akan mencoba bunuh diri?");
+        Scene scene9 = createMentalScene("9.Apakah Anda merasa tidak berharga atau merasa bersalah secara berlebihan?");
+        Scene scene10 = createMentalScene("10.Apakah Anda sering merasa kelelahan fisik dan mental tanpa alasan yang jelas?");
         // Tambahkan scene lainnya di sini...
 
         // Simpan semua scene dalam sebuah array
@@ -232,6 +232,7 @@ public class App extends Application {
         Label pertanyaan=new Label(question);
         pertanyaan.setTextAlignment(TextAlignment.CENTER);
         pertanyaan.setFont(Font.font("Times New Roman", 25));
+ 
         
         Button yesButton = new Button("Iya");
         yesButton.getStyleClass().add("custom-btnstart");
@@ -252,7 +253,7 @@ public class App extends Application {
             nextScene();
         });
 
-        Image image1 = new Image(getClass().getResource("/bgmntal.png").toString());
+        Image image1 = new Image(getClass().getResource("/image1.png").toString());
         ImageView bgscenemental = new ImageView(image1);
         bgscenemental.setFitWidth(1000);
         bgscenemental.setFitHeight(600);
@@ -304,9 +305,21 @@ public class App extends Application {
 
    
     private void showTekaTekiScene() {
-        Scene scene1 =createplayscene(" Saya adalah sebuah angka. Jika saya membagi 20 menjadi dua bagian, saya akan mendapatkan dua angka yang jika ditambahkan, akan menghasilkan hasil yang sama seperti ketika saya mengalikannya. Apa angka saya?", "5", "5","8", "10");
-        Scene scene2 =createplayscene("Halo pak","A", "a", "B", "C");
+        Scene scene1 =createplayscene("1 Saya adalah sebuah angka. Jika saya membagi 20 menjadi dua bagian, saya akan mendapatkan dua angka yang jika ditambahkan, akan menghasilkan hasil yang sama seperti ketika saya mengalikannya. Apa angka saya?", "5", "5","8", "10");
+        Scene scene2 =createplayscene("2.Aku bisa menghancurkan rasa lapar, membuatmu merasa kenyang, dan tidak pernah bergerak. Apa aku?","Pikiran", "Makanan", "Air", "Pikiran");
+        Scene scene3=createplayscene("ku berada di awal kehidupan, di akhir kematian, dan selalu hadir dalam perjalanan hidupmu. Apa aku?", "Harapan","Harapan", "Cinta", "Keberanian");
+        Scene scene4=createplayscene("4.Aku memiliki banyak cabang tapi tidak memiliki daun. Aku tidak memancarkan cahaya, tetapi aku membuat orang terang. Apa aku?", "Jaringan Saraf","Pohon Keluarga","Listrik","Jaringan ");
+        Scene scene5=createplayscene("5. Aku adalah sesuatu yang kamu bisa menemukan di dalam dirimu, memberimu kekuatan, dan membuatmu merasa tak terkalahkan. Apa aku?", "Kepercayaan Diri","Kepercayaan Diri", "Imajinasi","Waktu");
+        Scene scene6=createplayscene("6. Aku bisa melihat segalanya, tetapi tidak memiliki mata. Aku bisa memecahkan teka-teki, tetapi tidak memiliki otak. Siapakah aku?","Cahaya","Kaca Pembesar","Cermin","Cahaya");
+        Scene scene7=createplayscene("7. Aku mengalir tanpa henti, tetapi tidak bisa dipegang. Aku bisa merusak atau memperbaiki suasana hati. Apa aku?", "Emosi","Misteri","Rahasia","Pikiran");
+        Scene scene8=createplayscene( "8. Aku ada ketika kamu membicarakannya, aku hilang ketika kamu menyebut namaku. Siapakah aku?","Rahasia", "Misteri","Rahasia","Pikiran");
+        Scene scene9=createplayscene("9. Aku bisa menguji ketahananmu, tetapi tidak bisa dilihat. Aku bisa membuatmu tumbuh atau hancur. Siapakah aku?","Tekanan","Tekanan","Keberanian", "Kebanggaan");
+        Scene scene10=createplayscene("10. Aku adalah sesuatu yang kamu ingin tetapi kamu tidak ingin memberikannya. Kamu mencariku tetapi kamu tidak ingin menemukanku. Siapakah aku?", "Masalah","Kesulitan","Masalah","Kebutuhan");
 
+        
+        playscene=new Scene[]{scene1,scene2,scene3,scene4,scene5,scene6,scene7,scene8,scene9,scene10};
+        primaryStage.setScene(playscene[currentSceneIndex]);
+        primaryStage.show();
     }
     private Scene createplayscene(String question,String answer,String A,String B,String C) {
         Label pertanyaan=new Label(question);
@@ -314,25 +327,40 @@ public class App extends Application {
         Button AButton = new Button(A);
         AButton.setOnAction(e->{
             user1.answerA();
-            nextScene();
+            nextPlayScene();
         });
         Button BButton = new Button(B);
         BButton.setOnAction(e->{
             user1.answerB();
-            nextScene();
+            nextPlayScene();
         });
-        Button CButton = new Button("Tidak");
+        Button CButton = new Button(C);
         CButton.setOnAction(e->{
             user1.answerC();
-            nextScene();
+            nextPlayScene();
         });
         
         HBox layout=new HBox(10);
         layout.getChildren().addAll(AButton,BButton,CButton);
         VBox layout1=new VBox(10);
-        layout1.getChildren().addAll(pertanyaan,layout1);
+        layout1.getChildren().addAll(pertanyaan,layout);
         Scene scene=new Scene(layout1, 600, 600);
         return scene;
+    }
+    private void nextPlayScene() {
+        
+        currentSceneIndex++;
+        
+        if (currentSceneIndex >playscene.length-1) {
+            currentSceneIndex = 0;
+        Scene nextScene = show_result();
+        primaryStage.setScene(nextScene);
+        primaryStage.show();
+        }
+
+        else{
+        primaryStage.setScene(playscene[currentSceneIndex]);
+        }
     }
 
 
