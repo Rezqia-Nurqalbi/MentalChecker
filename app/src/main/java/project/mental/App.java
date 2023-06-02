@@ -1,7 +1,6 @@
 package project.mental;
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -11,8 +10,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -44,7 +41,7 @@ public class App extends Application {
         bgscene1.setFitWidth(600);
         bgscene1.setFitHeight(400);
 
-        Label title = new Label("Selamat Datang");
+        Label title = new Label("WELCOME TO MENTAL CHECKER APP");
         title.setFont(Font.font("ELEPHANT", 25));
         Button startButton = new Button("Mulai");
         startButton.getStyleClass().add("custom-btnstart");
@@ -274,8 +271,10 @@ public class App extends Application {
         resultLabel.setTextAlignment(TextAlignment.CENTER);
         resultLabel.setFont(Font.font("Times New Roman", 20));
         Button button=new Button("Kembali ke menu utama");
+        button.getStyleClass().add("custom-ShowResult");
         button.setOnAction(e->showMenuScene());
         Button button2=new Button("Logout");
+        button2.getStyleClass().add("custom-showResult");
         button2.setOnAction(e->showNameInputScene());
         HBox layou=new HBox(10);
         layou.setAlignment(Pos.BOTTOM_LEFT);
@@ -338,16 +337,19 @@ public class App extends Application {
         pertanyaan.setFont(Font.font("Times New Roman", 18));
         
         Button AButton = new Button(A);
+        AButton.getStyleClass().add("custom-tekatekibuton");
         AButton.setOnAction(e->{
             user1.answerA();
             nextPlayScene();
         });
         Button BButton = new Button(B);
+        BButton.getStyleClass().add("custom-tekatekibuton");
         BButton.setOnAction(e->{
             user1.answerB();
             nextPlayScene();
         });
         Button CButton = new Button(C);
+        CButton.getStyleClass().add("custom-tekatekibuton");
         CButton.setOnAction(e->{
             user1.answerC();
             nextPlayScene();

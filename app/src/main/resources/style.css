@@ -22,3 +22,25 @@
 .custom-menu{
     -fx-background-color :rgba(108, 115, 179, 1)
 }
+
+.custom-tekatekibuton{
+    -fx-background-color : rgb(194, 121, 19)
+    -fx-background-radius 5px;
+    -fx-border-radius: 5px;
+    -fx-text-fill: rgb(233, 215, 215);
+    -fx-font-family: "ARIAL";
+    -fx-font-size: 15px;
+    -fx-min-width: 50px;
+    -fx-min-height: 20px;
+}
+
+.custom-ShowResult {
+    -fx-background-color : rgb(194, 121, 19)
+    -fx-background-radius 5px;
+    -fx-border-radius: 5px;
+    -fx-text-fill: rgb(233, 215, 215);
+    -fx-font-family: "ARIAL";
+    -fx-font-size: 15Spx;
+    -fx-min-width: 100px;
+    -fx-min-height: 40px;
+}
