@@ -21,7 +21,7 @@ import project.mental.Models.UserPlay;
 
 public class App extends Application {
     private Stage primaryStage;
-    private String name;
+    // private String name;
     private Scene[] scenes;
     private Scene[]playscene;
     private int currentSceneIndex;
@@ -279,7 +279,7 @@ public class App extends Application {
         button.getStyleClass().add("custom-ShowResult");
         button.setOnAction(e->showMenuScene());
         Button button2=new Button("Logout");
-        button2.getStyleClass().add("custom-showResult");
+        button2.getStyleClass().add("custom-ShowResult");
         button2.setOnAction(e->showNameInputScene());
         HBox layou=new HBox(10);
         layou.setAlignment(Pos.BOTTOM_LEFT);
@@ -415,6 +415,7 @@ public class App extends Application {
         Label resultLabel = new Label("Goodjob");
         Label pointLabel=new Label("Anda berhasil  menjawab "+userplay1.getScore()+" Dari 10 pertanyaan dengan benar");
         Button closeButton = new Button("Tutup");
+        closeButton.getStyleClass().add("custom-ShowResult");
         closeButton.setOnAction(e -> showMenuScene());
         userplay1.setScore(0);
         
