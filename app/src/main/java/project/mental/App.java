@@ -17,6 +17,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import project.mental.Models.UserCheck;
+import project.mental.Models.UserPlay;
 
 public class App extends Application {
     private Stage primaryStage;
@@ -25,6 +26,7 @@ public class App extends Application {
     private Scene[]playscene;
     private int currentSceneIndex;
     UserCheck user1=new UserCheck(null);
+    UserPlay userplay1=new UserPlay(null);
 
     @Override
     public void start(Stage primaryStage) {
@@ -105,6 +107,8 @@ public class App extends Application {
                     int password = Integer.parseInt(passwordText);
                     user1.setName(name);
                     user1.setPass(password);
+                    userplay1.setName(name);
+                    userplay1.setPass(password);
                     showMenuScene();
                 } catch (NumberFormatException ex) {
                     showAlert("Password harus berupa angka!");
@@ -203,6 +207,7 @@ public class App extends Application {
 
     private void showMentalCheckerScene() {
         // Inisialisasi semua scene
+        
         Scene scene1 = createMentalScene("Apa kamu sering mendapati dirimu merasakan kesedihan yang berlebihan?");
         Scene scene2 = createMentalScene("Apa kamu merasa tidak percaya diri dengan semua kondisimu sekarang?");
         Scene scene3 = createMentalScene("Apakah Kamu Mudah Tersinggung dengan Omongan dan \nRespon Orang Lain Terhadapmu?");
@@ -321,7 +326,7 @@ public class App extends Application {
         Scene scene4=createplayscene("Aku memiliki banyak cabang tapi tidak memiliki daun. Aku tidak memancarkan cahaya, tetapi aku membuat orang terang. Apa aku?", "Jaringan Saraf","Pohon Keluarga","Listrik","Jaringan ");
         Scene scene5=createplayscene("Aku adalah sesuatu yang kamu bisa menemukan di dalam dirimu, memberimu kekuatan, \ndan membuatmu merasa tak terkalahkan. Apa aku?", "Kepercayaan Diri","Kepercayaan Diri", "Imajinasi","Waktu");
         Scene scene6=createplayscene("Aku bisa melihat segalanya, tetapi tidak memiliki mata. Aku bisa memecahkan teka-teki, \ntetapi tidak memiliki otak. Siapakah aku?","Cahaya","Kaca Pembesar","Cermin","Cahaya");
-        Scene scene7=createplayscene("Aku mengalir tanpa henti, tetapi tidak bisa dipegang. Aku bisa merusak atau memperbaiki suasana hati. Apa aku?", "Emosi","Misteri","Rahasia","Pikiran");
+        Scene scene7=createplayscene("Aku mengalir tanpa henti, tetapi tidak bisa dipegang. Aku bisa merusak atau memperbaiki suasana hati. Apa aku?", "Emosi","Emosi","Waktu","Suara");
         Scene scene8=createplayscene( "Aku ada ketika kamu membicarakannya, aku hilang ketika kamu menyebut namaku. Siapakah aku?","Rahasia", "Misteri","Rahasia","Pikiran");
         Scene scene9=createplayscene("Aku bisa menguji ketahananmu, tetapi tidak bisa dilihat. Aku bisa membuatmu tumbuh atau hancur. Siapakah aku?","Tekanan","Tekanan","Keberanian", "Kebanggaan");
         Scene scene10=createplayscene("Aku adalah sesuatu yang kamu ingin tetapi kamu tidak ingin memberikannya. \nKamu mencariku tetapi kamu tidak ingin menemukanku. Siapakah aku?", "Masalah","Kesulitan","Masalah","Kebutuhan");
@@ -335,23 +340,34 @@ public class App extends Application {
         Label pertanyaan=new Label(question);
         pertanyaan.setTextAlignment(TextAlignment.CENTER);
         pertanyaan.setFont(Font.font("Times New Roman", 18));
-        
         Button AButton = new Button(A);
         AButton.getStyleClass().add("custom-tekatekibuton");
         AButton.setOnAction(e->{
-            user1.answerA();
+            userplay1.setAnswer(answer);
+            userplay1.answerA(A);;
+            userplay1.checkAnswer();
+            System.out.println(userplay1.answer);
+            System.out.println("\n"+userplay1.key);
             nextPlayScene();
         });
         Button BButton = new Button(B);
         BButton.getStyleClass().add("custom-tekatekibuton");
         BButton.setOnAction(e->{
-            user1.answerB();
+            userplay1.setAnswer(answer);
+            userplay1.answerB(B);
+            userplay1.checkAnswer();
+            System.out.println(userplay1.answer);
+            System.out.println("\n"+userplay1.key);
             nextPlayScene();
         });
         Button CButton = new Button(C);
+        userplay1.setAnswer(answer);
         CButton.getStyleClass().add("custom-tekatekibuton");
         CButton.setOnAction(e->{
-            user1.answerC();
+            userplay1.answerC(C);
+            userplay1.checkAnswer();
+            System.out.println(userplay1.answer);
+            System.out.println("\n"+userplay1.key);
             nextPlayScene();
         });
 
@@ -379,7 +395,7 @@ public class App extends Application {
         
         if (currentSceneIndex >playscene.length-1) {
             currentSceneIndex = 0;
-        Scene nextScene = show_result();
+        Scene nextScene = showResultScene();
         primaryStage.setScene(nextScene);
         primaryStage.show();
         }
@@ -392,18 +408,19 @@ public class App extends Application {
 
         
     
-    private void showResultScene(String result ) {
-        Label resultLabel = new Label("Hasil: " + result);
+    private Scene showResultScene() {
+        Label resultLabel = new Label("Goodjob");
+        Label pointLabel=new Label("Anda berhasil  menjawab "+userplay1.getScore()+" Dari 10 pertanyaan dengan benar");
         Button closeButton = new Button("Tutup");
-        closeButton.setOnAction(e -> primaryStage.close());
-
+        closeButton.setOnAction(e -> showMenuScene());
+        userplay1.setScore(0);
+        
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.CENTER);
-        layout.getChildren().addAll(resultLabel, closeButton);
+        layout.getChildren().addAll(resultLabel,pointLabel, closeButton);
 
         Scene scene = new Scene(layout, 400, 300);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        return scene;
     }
 
     public static void main(String[] args) {
