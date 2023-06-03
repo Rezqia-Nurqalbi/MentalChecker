@@ -11,7 +11,6 @@
 
 .custom-padding1 {
     -fx-padding: 500px;
-    -fx-background-color :rgb(250, 250, 250)
 }
 
 .custom-scene2{
@@ -40,7 +39,7 @@
     -fx-border-radius: 5px;
     -fx-text-fill: rgb(233, 215, 215);
     -fx-font-family: "ARIAL";
-    -fx-font-size: 15Spx;
+    -fx-font-size: 15px;
     -fx-min-width: 100px;
     -fx-min-height: 40px;
 }

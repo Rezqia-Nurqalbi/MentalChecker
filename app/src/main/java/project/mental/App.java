@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import project.mental.Models.UserCheck;
@@ -40,8 +41,8 @@ public class App extends Application {
 
         Image image = new Image(getClass().getResource("/scene1.png").toString());
         ImageView bgscene1 = new ImageView(image);
-        bgscene1.setFitWidth(600);
-        bgscene1.setFitHeight(400);
+        bgscene1.setFitWidth(700);
+        bgscene1.setFitHeight(500);
 
         Label title = new Label("WELCOME TO MENTAL CHECKER APP");
         title.setFont(Font.font("ELEPHANT", 25));
@@ -49,10 +50,10 @@ public class App extends Application {
         startButton.getStyleClass().add("custom-btnstart");
         startButton.setOnAction(e -> showNameInputScene());
 
-        VBox layout1 = new VBox(15);
+        VBox layout1 = new VBox(0);
         layout1.getChildren().addAll(title, bgscene1,startButton);
         layout1.setAlignment(Pos.CENTER);
-        layout1.getStyleClass().add("custom-padding1");
+        layout1.getStyleClass().add("custom-menu");
         layout1.setStyle("-fx-padding:100px");
 
         Scene scene = new Scene(layout1, 1000, 600);
@@ -61,43 +62,19 @@ public class App extends Application {
         primaryStage.show();
     }
 
-    // private void showNameInputScene() {
-    //     Label nameLabel = new Label("Masukkan nama Anda:");
-    //     TextField nameField = new TextField();
-    //     nameField.setPromptText("name");
-    //     Button nextButton = new Button("Selanjutnya");
-    //     nextButton.setOnAction(e -> {
-    //         user1.setName(name);
-    //         showMenuScene();
-    //     });
-
-    //     Image image = new Image(getClass().getResource("/scene2.png").toString());
-    //     ImageView bguname = new ImageView(image);
-    //     bguname.setFitWidth(500);
-    //     bguname.setFitHeight(400);
-
-    //     VBox scene2 = new VBox(10);
-    //     scene2.setPrefWidth(1000);
-    //     scene2.setAlignment(Pos.CENTER);
-    //     scene2.getChildren().addAll(bguname,nameLabel, nameField, nextButton);
-    //     scene2.getStyleClass().add("custom-scene2");
-
-    //     Scene scene = new Scene(scene2, 1000, 600);
-    //     scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
-    //     primaryStage.setScene(scene);
-    //     primaryStage.show();
-    // }
-
     private void showNameInputScene() {
         Label nameLabel = new Label("Masukkan nama:");
+        nameLabel.setFont(Font.font("Times New Roman", 20));
         TextField nameField = new TextField();
         nameField.setPromptText("name");
     
         Label passwordLabel = new Label("Masukkan password:");
+        passwordLabel.setFont(Font.font("Times New Roman", 20));
         PasswordField passwordField = new PasswordField();
         passwordField.setPromptText("password");
     
-        Button nextButton = new Button("Selanjutnya");
+        Button nextButton = new Button("NEXT");
+        nextButton.getStyleClass().add("custom-ShowResult");
         nextButton.setOnAction(e -> {
             String name = nameField.getText();
             String passwordText = passwordField.getText();
@@ -123,7 +100,7 @@ public class App extends Application {
         bguname.setFitWidth(500);
         bguname.setFitHeight(400);
     
-        VBox scene2 = new VBox(10);
+        VBox scene2 = new VBox(5);
         scene2.setPrefWidth(1000);
         scene2.setAlignment(Pos.CENTER);
         scene2.getChildren().addAll(bguname, nameLabel, nameField, passwordLabel, passwordField, nextButton);
@@ -142,36 +119,6 @@ public class App extends Application {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
-    // private void showMenuScene() {
-    //     Label menuLabel = new Label("Pilih menu:");
-    //     menuLabel.setFont(Font.font("ELEPHANT", 25));
-
-    //     Button mentalCheckerButton = new Button("Mental Check");
-    //     mentalCheckerButton.getStyleClass().add("custom-btnstart");
-    //     mentalCheckerButton.setOnAction(e -> showMentalCheckerScene());
-
-    //     Button tekaTekiButton = new Button("Teka-Teki");
-    //     tekaTekiButton.getStyleClass().add("custom-btnstart");
-    //     tekaTekiButton.setOnAction(e -> showTekaTekiScene());
-
-    //     Image image = new Image(getClass().getResource("/menu.png").toString());
-    //     ImageView bgmenu = new ImageView(image);
-    //     bgmenu.setFitWidth(1000);
-    //     bgmenu.setFitHeight(600);
-    //     // bgmenu.setPreserveRatio(true);
-
-    //     VBox layout = new VBox(10);
-    //     layout.setAlignment(Pos.CENTER);
-    //     layout.getChildren().addAll(menuLabel, mentalCheckerButton, tekaTekiButton);
-    //     // layout.getStyleClass().add("custom-menu");
-
-    //     StackPane layout2 = new StackPane(bgmenu, layout);
-
-    //     Scene scene = new Scene(layout2, 1000, 600);
-    //     scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
-    //     primaryStage.setScene(scene);
-    // }
 
     private void showMenuScene() {
         Label menuLabel = new Label("Pilih menu:");
@@ -196,7 +143,7 @@ public class App extends Application {
     
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.CENTER);
-        layout.getChildren().addAll(menuLabel, mentalCheckerButton, tekaTekiButton, backButton);
+        layout.getChildren().addAll(menuLabel, tekaTekiButton, mentalCheckerButton,  backButton);
     
         StackPane layout2 = new StackPane(bgmenu, layout);
     
@@ -213,8 +160,8 @@ public class App extends Application {
         Scene scene3 = createMentalScene("Apakah Kamu Mudah Tersinggung dengan Omongan dan \nRespon Orang Lain Terhadapmu?");
         Scene scene4 = createMentalScene("Apakah perasaan cemas atau tidak nyaman \ndi sekitar orang lain mengganggu Anda?");
         Scene scene5 = createMentalScene("Apakah Anda pernah merasa bahwa Anda telah dipengaruhi \noleh perasaan gelisah, cemas, atau gugup?");
-        Scene scene6 = createMentalScene("Selama 12 bulan terakhir, seberapa sering Anda \nmerasa sendirian atau kesepian?");
-        Scene scene7 = createMentalScene("Selama 12 bulan terakhir, seberapa sering Anda \n secara serius mempertimbangkan untuk mencoba bunuh diri?");
+        Scene scene6 = createMentalScene("Selama 12 bulan terakhir, apakah anda sering \nmerasa sendirian atau kesepian?");
+        Scene scene7 = createMentalScene("Selama 12 bulan terakhir, apakah anda sering Anda \n secara serius mempertimbangkan untuk mencoba bunuh diri?");
         Scene scene8 = createMentalScene("Selama 12 bulan terakhir, apakah Anda pernah merencanakan \nbagaimana Anda akan mencoba bunuh diri?");
         Scene scene9 = createMentalScene("Apakah Anda merasa tidak berharga atau \nmerasa bersalah secara berlebihan?");
         Scene scene10 = createMentalScene("Apakah Anda sering merasa kelelahan fisik \ndan mental tanpa alasan yang jelas?");
@@ -264,7 +211,7 @@ public class App extends Application {
         VBox layout1 = new VBox(10);
         layout1.getChildren().addAll(pertanyaan, yesButton, smButton, noButton);
         layout1.setAlignment(Pos.CENTER);
-        // layout1.getStyleClass().add("custom-padding1");
+        //layout1.getStyleClass().add("custom-padding1");
 
         StackPane layout2 = new StackPane(bgscenemental, layout1);
         Scene scene = new Scene(layout2, 1000, 600);
@@ -272,7 +219,10 @@ public class App extends Application {
         return scene;
     }
     private Scene show_result (){
-        Label resultLabel=new Label(user1.showResult());
+        Text resultLabel=new Text(user1.showResult());
+        user1.reset();
+
+        
         resultLabel.setTextAlignment(TextAlignment.CENTER);
         resultLabel.setFont(Font.font("Times New Roman", 20));
         Button button=new Button("Kembali ke menu utama");
@@ -286,12 +236,12 @@ public class App extends Application {
 
         Image hasil = new Image(getClass().getResource("/result.png").toString());
         ImageView result = new ImageView(hasil);
-        result.setFitWidth(500);
-        result.setFitHeight(300);
+        result.setFitWidth(700);
+        result.setFitHeight(400);
         
         layou.getChildren().addAll(button,button2);
         
-        VBox layou1=new VBox(80);
+        VBox layou1=new VBox(15);
         layou1.getChildren().addAll(resultLabel, result, layou);
         layou1.setAlignment(Pos.CENTER);
         layou1.getStyleClass().add("custom-scene2");
@@ -320,16 +270,16 @@ public class App extends Application {
 
    
     private void showTekaTekiScene() {
-        Scene scene1 =createplayscene("Saya adalah sebuah angka. Jika saya membagi 20 menjadi dua bagian, saya akan mendapatkan dua angka yang jika ditambahkan, \nakan menghasilkan hasil yang sama seperti ketika saya mengalikannya. Apa angka saya?", "5", "5","8", "10");
-        Scene scene2 =createplayscene("Aku bisa menghancurkan rasa lapar, membuatmu merasa kenyang, dan tidak pernah bergerak. Apa aku?","Pikiran", "Makanan", "Air", "Pikiran");
-        Scene scene3=createplayscene("Aku berada di awal kehidupan, di akhir kematian, dan selalu hadir dalam perjalanan hidupmu. Apa aku?", "Harapan","Harapan", "Cinta", "Keberanian");
-        Scene scene4=createplayscene("Aku memiliki banyak cabang tapi tidak memiliki daun. Aku tidak memancarkan cahaya, tetapi aku membuat orang terang. Apa aku?", "Jaringan Saraf","Pohon Keluarga","Listrik","Jaringan Saraf");
-        Scene scene5=createplayscene("Aku adalah sesuatu yang kamu bisa menemukan di dalam dirimu, memberimu kekuatan, \ndan membuatmu merasa tak terkalahkan. Apa aku?", "Kepercayaan Diri","Kepercayaan Diri", "Imajinasi","Waktu");
-        Scene scene6=createplayscene("Aku bisa melihat segalanya, tetapi tidak memiliki mata. Aku bisa memecahkan teka-teki, \ntetapi tidak memiliki otak. Siapakah aku?","Cahaya","Kaca Pembesar","Cermin","Cahaya");
-        Scene scene7=createplayscene("Aku mengalir tanpa henti, tetapi tidak bisa dipegang. Aku bisa merusak atau memperbaiki suasana hati. Apa aku?", "Emosi","Emosi","Waktu","Suara");
-        Scene scene8=createplayscene( "Aku ada ketika kamu membicarakannya, aku hilang ketika kamu menyebut namaku. Siapakah aku?","Rahasia", "Misteri","Rahasia","Pikiran");
-        Scene scene9=createplayscene("Aku bisa menguji ketahananmu, tetapi tidak bisa dilihat. Aku bisa membuatmu tumbuh atau hancur. Siapakah aku?","Tekanan","Tekanan","Keberanian", "Kebanggaan");
-        Scene scene10=createplayscene("Aku adalah sesuatu yang kamu ingin tetapi kamu tidak ingin memberikannya. \nKamu mencariku tetapi kamu tidak ingin menemukanku. Siapakah aku?", "Masalah","Kesulitan","Masalah","Kebutuhan");
+        Scene scene1 =createplayscene("Saya adalah sebuah angka. Jika saya membagi 20 menjadi dua bagian, \nsaya akan mendapatkan dua angka yang jika ditambahkan, \nakan menghasilkan hasil yang sama seperti ketika saya mengalikannya. \nApa angka saya?", "5", "5","8", "10");
+        Scene scene2 =createplayscene("Aku bisa menghancurkan rasa lapar, membuatmu merasa kenyang, dan tidak pernah bergerak. \nApa aku?","Pikiran", "Makanan", "Air", "Pikiran");
+        Scene scene3=createplayscene("Aku berada di awal kehidupan, di akhir kematian, dan selalu hadir dalam perjalanan hidupmu. \nApa aku?", "Harapan","Harapan", "Cinta", "Keberanian");
+        Scene scene4=createplayscene("Aku memiliki banyak cabang tapi tidak memiliki daun. \nAku tidak memancarkan cahaya, tetapi aku membuat orang terang. \nApa aku?", "Jaringan Saraf","Pohon Keluarga","Listrik","Jaringan Saraf");
+        Scene scene5=createplayscene("Aku adalah sesuatu yang kamu bisa menemukan di dalam dirimu, \nmemberimu kekuatan, dan membuatmu merasa tak terkalahkan. \nApa aku?", "Kepercayaan Diri","Kepercayaan Diri", "Imajinasi","Waktu");
+        Scene scene6=createplayscene("Aku bisa melihat segalanya, tetapi tidak memiliki mata. \nAku bisa memecahkan teka-teki, tetapi tidak memiliki otak. \nSiapakah aku?","Cahaya","Kaca Pembesar","Cermin","Cahaya");
+        Scene scene7=createplayscene("Aku mengalir tanpa henti, tetapi tidak bisa dipegang. \nAku bisa merusak atau memperbaiki suasana hati. \nApa aku?", "Emosi","Emosi","Waktu","Suara");
+        Scene scene8=createplayscene( "Aku ada ketika kamu membicarakannya, aku hilang \nketika kamu menyebut namaku. \nSiapakah aku?","Rahasia", "Misteri","Rahasia","Pikiran");
+        Scene scene9=createplayscene("Aku bisa menguji ketahananmu, tetapi tidak bisa dilihat. \nAku bisa membuatmu tumbuh atau hancur. \nSiapakah aku?","Tekanan","Tekanan","Keberanian", "Kebanggaan");
+        Scene scene10=createplayscene("Aku adalah sesuatu yang kamu ingin tetapi kamu tidak ingin memberikannya. \nKamu mencariku tetapi kamu tidak ingin menemukanku. \nSiapakah aku?", "Masalah","Kesulitan","Masalah","Kebutuhan");
 
         
         playscene=new Scene[]{scene1,scene2,scene3,scene4,scene5,scene6,scene7,scene8,scene9,scene10};
@@ -339,7 +289,7 @@ public class App extends Application {
     private Scene createplayscene(String question,String answer,String A,String B,String C) {
         Label pertanyaan=new Label(question);
         pertanyaan.setTextAlignment(TextAlignment.CENTER);
-        pertanyaan.setFont(Font.font("Times New Roman", 18));
+        pertanyaan.setFont(Font.font("Times New Roman", 23));
         Button AButton = new Button(A);
         AButton.getStyleClass().add("custom-tekatekibuton");
         AButton.setOnAction(e->{
@@ -412,18 +362,28 @@ public class App extends Application {
         
     
     private Scene showResultScene() {
-        Label resultLabel = new Label("Goodjob");
         Label pointLabel=new Label("Anda berhasil  menjawab "+userplay1.getScore()+" Dari 10 pertanyaan dengan benar");
+        pointLabel.setFont(Font.font("Times New Roman", 25));
+        pointLabel.setTextAlignment(TextAlignment.CENTER);
+
         Button closeButton = new Button("Tutup");
+        closeButton.getStyleClass().add("custom-btnstart");
         
         closeButton.setOnAction(e -> showMenuScene());
         userplay1.setScore(0);
+
+        Image hasil = new Image(getClass().getResource("/finish.png").toString());
+        ImageView result = new ImageView(hasil);
+        result.setFitWidth(700);
+        result.setFitHeight(400);
         
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.CENTER);
-        layout.getChildren().addAll(resultLabel,pointLabel, closeButton);
+        layout.getStyleClass().add("custom-menu");
+        layout.getChildren().addAll(result,pointLabel, closeButton);
 
-        Scene scene = new Scene(layout, 400, 300);
+        Scene scene = new Scene(layout, 1000, 600);
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         return scene;
     }
 
