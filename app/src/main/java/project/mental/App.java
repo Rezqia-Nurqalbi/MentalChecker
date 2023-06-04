@@ -1,5 +1,9 @@
 package project.mental;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -126,11 +130,11 @@ public class App extends Application {
     
         Button mentalCheckerButton = new Button("Mental Check");
         mentalCheckerButton.getStyleClass().add("custom-btnstart");
-        mentalCheckerButton.setOnAction(e -> showMentalCheckerScene());
+        mentalCheckerButton.setOnAction(e -> ShowGreet1());
     
         Button tekaTekiButton = new Button("Teka-Teki");
         tekaTekiButton.getStyleClass().add("custom-btnstart");
-        tekaTekiButton.setOnAction(e -> showTekaTekiScene());
+        tekaTekiButton.setOnAction(e -> ShowGreet2());
     
         Button backButton = new Button("Kembali");
         backButton.getStyleClass().add("custom-btnstart");
@@ -144,6 +148,63 @@ public class App extends Application {
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.CENTER);
         layout.getChildren().addAll(menuLabel, tekaTekiButton, mentalCheckerButton,  backButton);
+    
+        StackPane layout2 = new StackPane(bgmenu, layout);
+    
+        Scene scene = new Scene(layout2, 1000, 600);
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        primaryStage.setScene(scene);
+    }
+    private void ShowGreet1() {
+        
+        Label menuLabel = new Label(user1.greet());
+        menuLabel.setFont(Font.font("ELEPHANT", 25));
+        
+        Button mentalCheckerButton = new Button("Mulai");
+        mentalCheckerButton.getStyleClass().add("custom-btnstart");
+        mentalCheckerButton.setOnAction(e -> showMentalCheckerScene());
+        
+        Button backButton = new Button("Kembali");
+        backButton.getStyleClass().add("custom-btnstart");
+        backButton.setOnAction(e -> showMenuScene()); // Kembali ke halaman sebelumnya
+        
+        Image image = new Image(getClass().getResource("/menu.png").toString());
+        ImageView bgmenu = new ImageView(image);
+        bgmenu.setFitWidth(1000);
+        bgmenu.setFitHeight(600);
+    
+        VBox layout = new VBox(10);
+        layout.setAlignment(Pos.CENTER);
+        layout.getChildren().addAll(menuLabel , mentalCheckerButton, backButton);
+        
+        StackPane layout2 = new StackPane(bgmenu, layout);
+        
+        Scene scene = new Scene(layout2, 1000, 600);
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        primaryStage.setScene(scene);
+    }
+    private void ShowGreet2() {
+       
+        Label menuLabel = new Label(userplay1.greet());
+        menuLabel.setFont(Font.font("ELEPHANT", 25));
+    
+    
+        Button tekaTekiButton = new Button("Tentu !");
+        tekaTekiButton.getStyleClass().add("custom-btnstart");
+        tekaTekiButton.setOnAction(e -> showTekaTekiScene());
+    
+        Button backButton = new Button("Nanti aja deh");
+        backButton.getStyleClass().add("custom-btnstart");
+        backButton.setOnAction(e -> showMenuScene()); // Kembali ke halaman sebelumnya
+    
+        Image image = new Image(getClass().getResource("/menu.png").toString());
+        ImageView bgmenu = new ImageView(image);
+        bgmenu.setFitWidth(1000);
+        bgmenu.setFitHeight(600);
+    
+        VBox layout = new VBox(10);
+        layout.setAlignment(Pos.CENTER);
+        layout.getChildren().addAll(menuLabel, tekaTekiButton, backButton);
     
         StackPane layout2 = new StackPane(bgmenu, layout);
     
@@ -281,8 +342,10 @@ public class App extends Application {
         Scene scene9=createplayscene("Aku bisa menguji ketahananmu, tetapi tidak bisa dilihat. \nAku bisa membuatmu tumbuh atau hancur. \nSiapakah aku?","Tekanan","Tekanan","Keberanian", "Kebanggaan");
         Scene scene10=createplayscene("Aku adalah sesuatu yang kamu ingin tetapi kamu tidak ingin memberikannya. \nKamu mencariku tetapi kamu tidak ingin menemukanku. \nSiapakah aku?", "Masalah","Kesulitan","Masalah","Kebutuhan");
 
-        
         playscene=new Scene[]{scene1,scene2,scene3,scene4,scene5,scene6,scene7,scene8,scene9,scene10};
+        List<Scene> sceneList = Arrays.asList(playscene);
+        Collections.shuffle(sceneList);
+        sceneList.toArray(playscene);
         primaryStage.setScene(playscene[currentSceneIndex]);
         primaryStage.show();
     }
@@ -297,8 +360,6 @@ public class App extends Application {
             userplay1.answerA(A);
             userplay1.checkAnswer();
             
-            System.out.println(userplay1.key);
-            System.out.println(userplay1.answer);
             nextPlayScene();
         });
         Button BButton = new Button(B);
@@ -308,8 +369,7 @@ public class App extends Application {
             userplay1.answerB(B);
             userplay1.checkAnswer();
             
-            System.out.println(userplay1.key);
-            System.out.println(userplay1.answer);
+            
             nextPlayScene();
         });
         Button CButton = new Button(C);
@@ -318,8 +378,6 @@ public class App extends Application {
             userplay1.setAnswer(answer);
             userplay1.answerC(C);
             userplay1.checkAnswer();
-            System.out.println(userplay1.key);
-            System.out.println(userplay1.answer);
     
             nextPlayScene();
         });

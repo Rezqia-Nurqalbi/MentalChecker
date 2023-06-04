@@ -1,8 +1,8 @@
 package project.mental.Models;
 
 abstract class User {
-    private String name;
-    private int pass;
+     String name;
+     int pass;
 
     public String getName() {
         return name;
@@ -26,5 +26,5 @@ abstract class User {
     }
 
     // public abstract String calculateMentalState();
-    abstract void greet(String Username);
+    abstract public String greet();
 }

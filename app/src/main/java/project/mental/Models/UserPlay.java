@@ -53,8 +53,8 @@ public class UserPlay  extends User{
     }
 
     @Override
-    void greet(String Username) {
-        System.out.println("Selamat Datang");
+    public String greet() {
+        return "Selamat Datang" +name + " Di teka-teki\nPada bagian ini,anda akan menjawab 10 pertanyaan\n Anda siap? ";
     }
 
 }
