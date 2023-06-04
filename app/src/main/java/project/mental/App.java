@@ -77,6 +77,11 @@ public class App extends Application {
         PasswordField passwordField = new PasswordField();
         passwordField.setPromptText("password");
     
+        Button registButton = new Button("Belum Punya akun?");
+        registButton.getStyleClass().add("custom-ShowResult");
+        registButton.setOnAction(e->{
+           showRegisterScene();
+        });
         Button nextButton = new Button("NEXT");
         nextButton.getStyleClass().add("custom-ShowResult");
         nextButton.setOnAction(e -> {
@@ -90,6 +95,70 @@ public class App extends Application {
                     user1.setPass(password);
                     userplay1.setName(name);
                     userplay1.setPass(password);
+                    String username=nameField.getText();
+                    
+                    if (DbConnect.validasiLogin(username)){
+                        if(DbConnect.validasiPassword(password)){
+                            
+                            showMenuScene();
+                        }else{
+                            showAlert("Password Salah");
+                        }
+
+                        
+                    }else{
+                        showAlert("Anda belum punya akun");
+                    }
+                    
+                } catch (NumberFormatException ex) {
+                    showAlert("Password harus berupa angka!");
+                }
+            } else {
+                showAlert("Nama dan password tidak boleh kosong!");
+            }
+        });
+        Image image = new Image(getClass().getResource("/scene2.png").toString());
+        ImageView bguname = new ImageView(image);
+        bguname.setFitWidth(500);
+        bguname.setFitHeight(400);
+        HBox btm=new HBox(10,nextButton, registButton);
+        btm.setAlignment(Pos.CENTER);
+        VBox scene2 = new VBox(5);
+        scene2.setPrefWidth(1000);
+        scene2.setAlignment(Pos.CENTER);
+        scene2.getChildren().addAll(bguname, nameLabel, nameField, passwordLabel, passwordField, btm);
+        scene2.getStyleClass().add("custom-scene2");
+    
+        Scene scene = new Scene(scene2, 1000, 600);
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    private void showRegisterScene() {
+        Label nameLabel = new Label("Masukkan nama:");
+        nameLabel.setFont(Font.font("Times New Roman", 20));
+        TextField nameField = new TextField();
+        nameField.setPromptText("name");
+    
+        Label passwordLabel = new Label("Masukkan password:");
+        passwordLabel.setFont(Font.font("Times New Roman", 20));
+        PasswordField passwordField = new PasswordField();
+        passwordField.setPromptText("password");
+    
+        Button nextButton = new Button("Buat akun");
+        nextButton.getStyleClass().add("custom-ShowResult");
+        nextButton.setOnAction(e -> {
+            String name = nameField.getText();
+            String passwordText = passwordField.getText();
+    
+            if (!name.isEmpty() && !passwordText.isEmpty()) {
+                try {
+                    int password = Integer.parseInt(passwordText);
+                    user1.setName(name);
+                    user1.setPass(password);
+                    userplay1.setName(name);
+                    userplay1.setPass(password);
+                    DbConnect.tambahData(name, password);
                     showMenuScene();
                 } catch (NumberFormatException ex) {
                     showAlert("Password harus berupa angka!");
@@ -98,16 +167,22 @@ public class App extends Application {
                 showAlert("Nama dan password tidak boleh kosong!");
             }
         });
-    
+        Button backButton = new Button("Kembali");
+        nextButton.getStyleClass().add("custom-ShowResult");
+        backButton.setOnAction(e->{
+            showNameInputScene();
+        });
+        
         Image image = new Image(getClass().getResource("/scene2.png").toString());
         ImageView bguname = new ImageView(image);
         bguname.setFitWidth(500);
         bguname.setFitHeight(400);
     
+        HBox btm=new HBox(10, backButton,nextButton);
         VBox scene2 = new VBox(5);
         scene2.setPrefWidth(1000);
         scene2.setAlignment(Pos.CENTER);
-        scene2.getChildren().addAll(bguname, nameLabel, nameField, passwordLabel, passwordField, nextButton);
+        scene2.getChildren().addAll(bguname, nameLabel, nameField, passwordLabel, passwordField,btm);
         scene2.getStyleClass().add("custom-scene2");
     
         Scene scene = new Scene(scene2, 1000, 600);
@@ -159,6 +234,7 @@ public class App extends Application {
         
         Label menuLabel = new Label(user1.greet());
         menuLabel.setFont(Font.font("ELEPHANT", 25));
+        menuLabel.setAlignment(Pos.CENTER);
         
         Button mentalCheckerButton = new Button("Mulai");
         mentalCheckerButton.getStyleClass().add("custom-btnstart");
@@ -187,7 +263,7 @@ public class App extends Application {
        
         Label menuLabel = new Label(userplay1.greet());
         menuLabel.setFont(Font.font("ELEPHANT", 25));
-    
+        menuLabel.setAlignment(Pos.CENTER);
     
         Button tekaTekiButton = new Button("Tentu !");
         tekaTekiButton.getStyleClass().add("custom-btnstart");

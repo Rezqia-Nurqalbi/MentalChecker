@@ -50,6 +50,6 @@ public class UserCheck extends User {
 
     @Override
     public String greet() {
-        return "Selamat Datang" +name + " Di mental checker \nPada bagian ini,anda akan menjawab 10 pertanyaan mengenai mental anda\n Selamat mencoba!";
+        return "Selamat Datang " +name + " Di mental checker \nPada bagian ini,anda akan menjawab 10 pertanyaan mengenai mental anda\n Selamat mencoba!";
     }
 }
