@@ -158,7 +158,8 @@ public class App extends Application {
     private void ShowGreet1() {
         
         Label menuLabel = new Label(user1.greet());
-        menuLabel.setFont(Font.font("ELEPHANT", 25));
+        menuLabel.setAlignment(Pos.CENTER);
+        menuLabel.setFont(Font.font("ELEPHANT", 20));
         
         Button mentalCheckerButton = new Button("Mulai");
         mentalCheckerButton.getStyleClass().add("custom-btnstart");
@@ -187,8 +188,7 @@ public class App extends Application {
        
         Label menuLabel = new Label(userplay1.greet());
         menuLabel.setFont(Font.font("ELEPHANT", 25));
-    
-    
+
         Button tekaTekiButton = new Button("Tentu !");
         tekaTekiButton.getStyleClass().add("custom-btnstart");
         tekaTekiButton.setOnAction(e -> showTekaTekiScene());

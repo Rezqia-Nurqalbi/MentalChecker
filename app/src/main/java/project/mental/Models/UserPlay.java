@@ -54,7 +54,7 @@ public class UserPlay  extends User{
 
     @Override
     public String greet() {
-        return "Selamat Datang" +name + " Di teka-teki\nPada bagian ini,anda akan menjawab 10 pertanyaan\n Anda siap? ";
+        return "Selamat Datang " + name + " Di teka-teki\nPada bagian ini,anda akan menjawab 10 pertanyaan\n Anda siap? ";
     }
 
 }
